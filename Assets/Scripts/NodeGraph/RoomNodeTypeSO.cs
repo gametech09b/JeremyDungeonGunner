@@ -8,24 +8,33 @@ public class RoomNodeTypeSO : ScriptableObject
 {
     public string roomNodeTypeName;
 
+    #region Header
     [Header("Only Flag the RoomNodeTypes that should be visible in the editor")]
+    #endregion
     public bool displayInNodeGraphEditor = true;
+    #region Header
     [Header("One Type Should Be A Corridor")]
+    #endregion
     public bool isCorridor;
-    
+    #region Header
     [Header("One Type Should Be A CorridorNS")]
+    #endregion
     public bool isCorridorNS;
-    
+    #region Header
     [Header("One Type Should Be A CorridorEW")]
+    #endregion
     public bool isCorridorEW;
-    
+    #region Header
     [Header("One Type Should Be A Entrance")]
+    #endregion
     public bool isEntrance;
-    
+    #region Header
     [Header("One Type Should Be A Boss Room")]
+    #endregion
     public bool isBossRoom;
-    
+    #region Header
     [Header("One Type Should Be None (Unassigned)")]
+    #endregion
     public bool isNone;
 
     #region Validation
@@ -35,4 +44,5 @@ public class RoomNodeTypeSO : ScriptableObject
     }
 #endif
     #endregion
+
 }
