@@ -14,7 +14,7 @@ public class RoomNodeSO : ScriptableObject
 
     #region Editor Code
 
-    // the following code should only be run in the unity editor
+    // the following code should only be run in the Unity Editor
 #if UNITY_EDITOR
 
     [HideInInspector] public Rect rect;
@@ -22,56 +22,60 @@ public class RoomNodeSO : ScriptableObject
     [HideInInspector] public bool isSelected = false;
 
     /// <summary>
-    /// Initialize node
+    /// Initialise node
     /// </summary>
     public void Initialise(Rect rect, RoomNodeGraphSO nodeGraph, RoomNodeTypeSO roomNodeType)
     {
         this.rect = rect;
         this.id = Guid.NewGuid().ToString();
-        this.name = "Room Node";
+        this.name = "RoomNode";
         this.roomNodeGraph = nodeGraph;
         this.roomNodeType = roomNodeType;
 
-        //Load room node type list
+        // Load room node type list
         roomNodeTypeList = GameResources.Instance.roomNodeTypeList;
     }
+
 
     /// <summary>
     /// Draw node with the nodestyle
     /// </summary>
-
     public void Draw(GUIStyle nodeStyle)
     {
-        // Draw node Box using begin area
+        //  Draw Node Box Using Begin Area
         GUILayout.BeginArea(rect, nodeStyle);
 
         // Start Region To Detect Popup Selection Changes
         EditorGUI.BeginChangeCheck();
 
-        //if the room node has a parent or is of type entrance then display a label else display a popup
-        if (parentRoomNodeIDList.Count == 0 || roomNodeType.isEntrance)
+        // if the room node has a parent or is of type entrance then display a label else display a popup
+        if (parentRoomNodeIDList.Count > 0 || roomNodeType.isEntrance)
         {
             // Display a label that can't be changed
             EditorGUILayout.LabelField(roomNodeType.roomNodeTypeName);
         }
         else
         {
-            // Display Popup using the RoomNodeType name values that can be selected from (default to the currently set roomNodeType)
+            // Display a popup using the RoomNodeType name values that can be selected from (default to the currently set roomNodeType)
             int selected = roomNodeTypeList.list.FindIndex(x => x == roomNodeType);
+
             int selection = EditorGUILayout.Popup("", selected, GetRoomNodeTypesToDisplay());
+
             roomNodeType = roomNodeTypeList.list[selection];
         }
+
         if (EditorGUI.EndChangeCheck())
             EditorUtility.SetDirty(this);
+
         GUILayout.EndArea();
     }
 
     /// <summary>
-    /// Populate a string array with the room node type to display that can be selected
+    /// Populate a string array with the room node types to display that can be selected
     /// </summary>
     public string[] GetRoomNodeTypesToDisplay()
     {
-        string[] roomArray = new string [roomNodeTypeList.list.Count];
+        string[] roomArray = new string[roomNodeTypeList.list.Count];
 
         for (int i = 0; i < roomNodeTypeList.list.Count; i++)
         {
@@ -80,35 +84,37 @@ public class RoomNodeSO : ScriptableObject
                 roomArray[i] = roomNodeTypeList.list[i].roomNodeTypeName;
             }
         }
+
         return roomArray;
     }
 
     /// <summary>
     /// Process events for the node
     /// </summary>
-    public void ProcessEvents (Event currentEvent)
+    public void ProcessEvents(Event currentEvent)
     {
         switch (currentEvent.type)
         {
-            //Process Mouse Down Events
+            // Process Mouse Down Events
             case EventType.MouseDown:
                 ProcessMouseDownEvent(currentEvent);
                 break;
-            //Process Mouse Up Events
+
+            // Process Mouse Up Events
             case EventType.MouseUp:
                 ProcessMouseUpEvent(currentEvent);
                 break;
-            //Process Mouse Drag Events
+
+            // Process Mouse Drag Events
             case EventType.MouseDrag:
                 ProcessMouseDragEvent(currentEvent);
                 break;
-            
+
             default:
                 break;
         }
     }
 
-    /// <summary>
     /// Process mouse down events
     /// </summary>
     private void ProcessMouseDownEvent(Event currentEvent)
@@ -132,7 +138,7 @@ public class RoomNodeSO : ScriptableObject
     {
         Selection.activeObject = this;
 
-        //Toggle node selection
+        // Toggle node selection
         if (isSelected == true)
         {
             isSelected = false;
@@ -144,12 +150,13 @@ public class RoomNodeSO : ScriptableObject
     }
 
     /// <summary>
-    /// Process right click down event
-    /// </summary>
+    /// Process right click down
+    /// 
     private void ProcessRightClickDownEvent(Event currentEvent)
     {
         roomNodeGraph.SetNodeToDrawConnectionLineFrom(this, currentEvent.mousePosition);
     }
+
 
     /// <summary>
     /// Process mouse up event
@@ -164,7 +171,7 @@ public class RoomNodeSO : ScriptableObject
     }
 
     /// <summary>
-    /// Process leftclickup event
+    /// Process left click up event
     /// </summary>
     private void ProcessLeftClickUpEvent()
     {
@@ -179,12 +186,13 @@ public class RoomNodeSO : ScriptableObject
     /// </summary>
     private void ProcessMouseDragEvent(Event currentEvent)
     {
-        // process left clik drag event
+        // process left click drag event
         if (currentEvent.button == 0)
         {
             ProcessLeftMouseDragEvent(currentEvent);
         }
     }
+
 
     /// <summary>
     /// Process left mouse drag event
@@ -192,22 +200,22 @@ public class RoomNodeSO : ScriptableObject
     private void ProcessLeftMouseDragEvent(Event currentEvent)
     {
         isLeftClickDragging = true;
-        
+
         DragNode(currentEvent.delta);
         GUI.changed = true;
     }
 
     /// <summary>
-    /// Drag Node
+    /// Drag node
     /// </summary>
-    public void DragNode (Vector2 delta)
+    public void DragNode(Vector2 delta)
     {
         rect.position += delta;
         EditorUtility.SetDirty(this);
     }
 
     /// <summary>
-    /// add childID to the node (returns true if the node has been added, false otherwise)
+    /// Add childID to the node (returns true if the node has been added, false otherwise)
     /// </summary>
     public bool AddChildRoomNodeIDToRoomNode(string childID)
     {
@@ -216,7 +224,7 @@ public class RoomNodeSO : ScriptableObject
     }
 
     /// <summary>
-    /// add parentID to the node (returns true if the node has been added, false otherwise)
+    /// Add parentID to the node (returns true if the node has been added, false otherwise)
     /// </summary>
     public bool AddParentRoomNodeIDToRoomNode(string parentID)
     {
