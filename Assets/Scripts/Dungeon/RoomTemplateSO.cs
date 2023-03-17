@@ -1,8 +1,8 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Room_", menuName = "ScriptableObjects/Dungeon/Room")]
+[CreateAssetMenu(fileName = "Room_", menuName = "Scriptable Objects/Dungeon/Room")]
 public class RoomTemplateSO : ScriptableObject
 {
     [HideInInspector] public string guid;
@@ -16,13 +16,14 @@ public class RoomTemplateSO : ScriptableObject
 
     #region Tooltip
 
-    [Tooltip("The gameobject prefab for the room (this will contain all the tilemaps for the room and environment gameobjects")]
+    [Tooltip("The gameobject prefab for the room (this will contain all the tilemaps for the room and environment game objects")]
 
     #endregion Tooltip
 
-    public GameObject prefab; 
+    public GameObject prefab;
 
     [HideInInspector] public GameObject previousPrefab; // this is used to regenerate the guid if the so is copied and the prefab is changed
+
 
     #region Header ROOM CONFIGURATION
 
@@ -74,7 +75,7 @@ public class RoomTemplateSO : ScriptableObject
     /// <summary>
     /// Returns the list of Entrances for the room template
     /// </summary>
-    public List<Doorway> GetDoorwaysList()
+    public List<Doorway> GetDoorwayList()
     {
         return doorwayList;
     }
@@ -96,10 +97,11 @@ public class RoomTemplateSO : ScriptableObject
 
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(doorwayList), doorwayList);
 
+        // Check spawn positions populated
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(spawnPositionArray), spawnPositionArray);
     }
 
 #endif
-    
-        #endregion Validation
+
+    #endregion Validation
 }
