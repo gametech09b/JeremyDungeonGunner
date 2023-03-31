@@ -7,10 +7,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1170931621904865165, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170931621904865165, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170931621904865165, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 726bdd212c403d84384f33d1e9ea5c68, type: 3}
+    - target: {fileID: 1170931621904865165, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153177895172272615, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153177895172272615, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153177895172272615, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 726bdd212c403d84384f33d1e9ea5c68, type: 3}
+    - target: {fileID: 5153177895172272615, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9174609208915998758, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: TheThief
       objectReference: {fileID: 0}
+    - target: {fileID: 9174609208915998776, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 198140809, guid: 7742bf775e49a964baa0c293a7b49e9d, type: 3}
+    - target: {fileID: 9174609208915998777, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fb0cc3b02f662c74f941f11193bb2c27, type: 2}
     - target: {fileID: 9174609208915998781, guid: c8df70c476cbf9844abc65fdd047c910, type: 3}
       propertyPath: m_RootOrder
       value: 0
