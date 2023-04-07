@@ -23,22 +23,24 @@ public class InstantiatedRoom : MonoBehaviour
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
 
+        // Save room collider bounds
         roomColliderBounds = boxCollider2D.bounds;
 
     }
 
     /// <summary>
-    /// initialise The Instantiated Room
+    /// Initialise The Instantiated Room
     /// </summary>
-    public void Initialise(GameObject roomGameObject)
+    public void Initialise(GameObject roomGameobject)
     {
-        PopulateTilemapMemberVariables(roomGameObject);
+        PopulateTilemapMemberVariables(roomGameobject);
 
         BlockOffUnusedDoorWays();
 
-        AddDoorsToRoom();
+        AddDoorsToRooms();
 
         DisableCollisionTilemapRenderer();
+
     }
 
     /// <summary>
@@ -46,7 +48,7 @@ public class InstantiatedRoom : MonoBehaviour
     /// </summary>
     private void PopulateTilemapMemberVariables(GameObject roomGameobject)
     {
-         // Get the grid component.
+        // Get the grid component.
         grid = roomGameobject.GetComponentInChildren<Grid>();
 
         // Get tilemaps in children.
@@ -80,6 +82,7 @@ public class InstantiatedRoom : MonoBehaviour
             }
 
         }
+
     }
 
     /// <summary>
@@ -146,8 +149,12 @@ public class InstantiatedRoom : MonoBehaviour
             case Orientation.none:
                 break;
         }
+
     }
 
+    /// <summary>
+    /// Block doorway horizontally - for North and South doorways
+    /// </summary>
     private void BlockDoorwayHorizontally(Tilemap tilemap, Doorway doorway)
     {
         Vector2Int startPosition = doorway.doorwayStartCopyPosition;
@@ -197,17 +204,18 @@ public class InstantiatedRoom : MonoBehaviour
     }
 
     /// <summary>
-    /// Add open doors if this is not a corridor room
+    /// Add opening doors if this is not a corridor room
     /// </summary>
-    private void AddDoorsToRoom()
+    private void AddDoorsToRooms()
     {
-        // If this is a corridor then return
+        // if the room is a corridor then return
         if (room.roomNodeType.isCorridorEW || room.roomNodeType.isCorridorNS) return;
 
-        // instantiate door prefabs at doorway positions
+        // Instantiate door prefabs at doorway positions
         foreach (Doorway doorway in room.doorWayList)
         {
-            // If this doorway prefab isn't null and the doorway is connected
+
+            // if the doorway prefab isn't null and the doorway is connected
             if (doorway.doorPrefab != null && doorway.isConnected)
             {
                 float tileDistance = Settings.tileSizePixels / Settings.pixelsPerUnit;
@@ -238,9 +246,24 @@ public class InstantiatedRoom : MonoBehaviour
                     door = Instantiate(doorway.doorPrefab, gameObject.transform);
                     door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y + tileDistance * 1.25f, 0f);
                 }
+
+                // Get door component
+                Door doorComponent = door.GetComponent<Door>();
+
+                // Set if door is part of a boss room
+                if (room.roomNodeType.isBossRoom)
+                {
+                    doorComponent.isBossRoomDoor = true;
+
+                    // lock the door to prevent access to the room
+                    doorComponent.LockDoor();
+                }
             }
+
         }
+
     }
+
 
     /// <summary>
     /// Disable collision tilemap renderer
@@ -251,4 +274,5 @@ public class InstantiatedRoom : MonoBehaviour
         collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
 
     }
+
 }

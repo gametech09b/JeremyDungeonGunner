@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 7387793205388140150}
   - component: {fileID: 762192152942589106}
   - component: {fileID: 7230877481868439554}
+  - component: {fileID: 5073659118482120327}
   - component: {fileID: 3967455872863757345}
   m_Layer: 13
   m_Name: DoorEW
@@ -219,6 +220,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5073659118482120327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047602861654688277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae3b42d36ae27349b74c34d77120163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorCollider: {fileID: 6902544171305009792}
+  isBossRoomDoor: 0
 --- !u!61 &3967455872863757345
 BoxCollider2D:
   m_ObjectHideFlags: 0

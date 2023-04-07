@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 4125324238935121337}
   - component: {fileID: 5464236741589712265}
   - component: {fileID: 5037783395753027918}
+  - component: {fileID: 5268865715902542485}
   - component: {fileID: 3000350598454359904}
   m_Layer: 13
   m_Name: DoorNS
@@ -224,6 +225,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5268865715902542485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809880575668284707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae3b42d36ae27349b74c34d77120163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorCollider: {fileID: 4085405036506345310}
+  isBossRoomDoor: 0
 --- !u!61 &3000350598454359904
 BoxCollider2D:
   m_ObjectHideFlags: 0
