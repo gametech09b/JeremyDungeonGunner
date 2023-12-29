@@ -437,6 +437,8 @@ GameObject:
   - component: {fileID: 1884730941215532098}
   - component: {fileID: -8800833389454396568}
   - component: {fileID: 5964172994316621045}
+  - component: {fileID: 8792456706765692681}
+  - component: {fileID: 4798913084696781172}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -737,7 +739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDetails: {fileID: 11400000, guid: b4b589982dbc6ea4284b50be03e98d31, type: 2}
-  weaponShootPosition: {fileID: 2898361836812168213}
 --- !u!114 &-2343008774494596758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,3 +815,27 @@ MonoBehaviour:
   weaponPolygonCollider2D: {fileID: 9174609208464824620}
   weaponShootPositionTransform: {fileID: 2898361836812168213}
   weaponEffectPositionTransform: {fileID: 8843721403237769924}
+--- !u!114 &8792456706765692681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174609208915998758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b877f677c24e2249a0a0b35c098152d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4798913084696781172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174609208915998758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc5f9a176f55f44d985211cc67ba802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
