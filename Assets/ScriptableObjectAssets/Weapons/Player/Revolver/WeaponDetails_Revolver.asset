@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278c8f87e5b95cf4bafc6175b574f0de, type: 3}
   m_Name: WeaponDetails_Revolver
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  weaponShootPosition: {x: 1.115, y: 0.277, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: aa079bba67d5c0347b95c62baa4b7385, type: 2}
-  hasInfiniteAmmo: 1
+  weaponName: Revolver
+  weaponSprite: {fileID: 21300000, guid: 29bc0107bc11191468ed7d175994fb5b, type: 3}
+  weaponShootPosition: {x: 1.15, y: 0.329, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 8a72730343e496643b86489f1593c18b, type: 2}
+  hasInfiniteAmmo: 0
   hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 10
-  weaponAmmoCapacity: 0
-  weaponFireRate: 0.25
+  weaponClipAmmoCapacity: 6
+  weaponAmmoCapacity: 40
+  weaponFireRate: 0.3
   weaponPrechargeTime: 0
-  weaponReloadTime: 1.2
+  weaponReloadTime: 1.8
