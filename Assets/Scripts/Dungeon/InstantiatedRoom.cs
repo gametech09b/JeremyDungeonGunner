@@ -15,6 +15,7 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap frontTilemap;
     [HideInInspector] public Tilemap collisionTilemap;
     [HideInInspector] public Tilemap minimapTilemap;
+    [HideInInspector] public int[,] aStarMovementPenalty;
     [HideInInspector] public Bounds roomColliderBounds;
 
     private BoxCollider2D boxCollider2D;
@@ -50,6 +51,8 @@ public class InstantiatedRoom : MonoBehaviour
         PopulateTilemapMemberVariables(roomGameobject);
 
         BlockOffUnusedDoorWays();
+
+        AddObstaclesAndPreferredPaths();
 
         AddDoorsToRooms();
 
@@ -217,6 +220,37 @@ public class InstantiatedRoom : MonoBehaviour
         }
     }
 
+    private void AddObstaclesAndPreferredPaths()
+    {
+        aStarMovementPenalty = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1, room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
+
+        for (int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
+        {
+            for (int y = 0; y < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
+            {
+                aStarMovementPenalty[x, y] = Settings.defaultAStarMovementPenalty;
+
+                TileBase tile = collisionTilemap.GetTile(new Vector3Int(room.templateLowerBounds.x + x, room.templateLowerBounds.y + y, 0));
+
+                foreach (TileBase collisionTile in GameResources.Instance.enemyUnwalkableCollisionTilesArray)
+                {
+                    if (tile == collisionTile)
+                    {
+                        aStarMovementPenalty[x, y] = 0;
+                        break;
+                    }
+                }
+
+                // Add preferred path for enemies (1 is the preferred path value, default value for
+                // a grid location is specified in the Settings).
+                if (tile == GameResources.Instance.preferredEnemyPathTile)
+                {
+                    aStarMovementPenalty[x, y] = Settings.preferredPathAStarMovementPenalty;
+                }
+            }
+        }   
+    }
+
     /// <summary>
     /// Add opening doors if this is not a corridor room
     /// </summary>
@@ -287,6 +321,50 @@ public class InstantiatedRoom : MonoBehaviour
         // Disable collision tilemap renderer
         collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
 
+    }
+
+    public void DisableRoomCollider()
+    {
+        boxCollider2D.enabled = false;
+    }
+
+    public void EnableRoomCollider()
+    {
+        boxCollider2D.enabled = true;
+    }
+
+    public void LockDoors()
+    {
+        Door[] doorArray = GetComponentsInChildren<Door>();
+
+        foreach (Door door in doorArray)
+        {
+            door.LockDoor();
+        }
+
+        DisableRoomCollider();
+    }
+
+    public void UnlockDoors(float doorUnlockDelay)
+    {
+        StartCoroutine(UnlockDoorsCoroutine(doorUnlockDelay));
+    }
+
+    private IEnumerator UnlockDoorsCoroutine(float doorUnlockDelay)
+    {
+        if (doorUnlockDelay > 0f)
+        {
+            yield return new WaitForSeconds(doorUnlockDelay);
+        }
+
+        Door[] doorArray = GetComponentsInChildren<Door>();
+
+        foreach (Door door in doorArray)
+        {
+            door.UnlockDoor();
+        }
+
+        EnableRoomCollider();
     }
 
 }

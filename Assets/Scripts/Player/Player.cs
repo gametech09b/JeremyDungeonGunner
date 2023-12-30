@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 #region REQUIRE COMPONENTS
+[RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(DealContactDamage))]
+[RequireComponent(typeof(RecieveContactDamage))]
+[RequireComponent(typeof(DestroyedEvent))]
 [RequireComponent(typeof(PlayerControl))]
 [RequireComponent(typeof(MovementByVelocityEvent))]
 [RequireComponent(typeof(MovementByVelocity))]
@@ -106,6 +110,14 @@ public class Player : MonoBehaviour
     private void SetPlayerHealth()
     {
         health.SetStartingHealth(playerDetails.playerHealthAmount);
+    }
+
+    /// <summary>
+    /// return the player position
+    /// </summary>
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
     }
 
     /// <summary>

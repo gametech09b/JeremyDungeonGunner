@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5032dadd24d1e4da064e327fb93632, type: 3}
+  m_Name: EnemyDetails_GrimonkBrown
+  m_EditorClassIdentifier: 
+  enemyName: Grimonk
+  enemyPrefab: {fileID: 6005733236124274839, guid: 897067a2ca93dee489b018c53130813f, type: 3}
+  chaseDistance: 50
+  enemyHealthDetailsArray:
+  - dungeonLevel: {fileID: 11400000, guid: 38d9bc055ab401d4ebe8e6ff45f1e582, type: 2}
+    enemyHealthAmount: 30
+  - dungeonLevel: {fileID: 11400000, guid: 8e477c0051976bc408237ec90cebeda0, type: 2}
+    enemyHealthAmount: 40
+  - dungeonLevel: {fileID: 11400000, guid: 402d3267ca7c3294d825ab2f00378d56, type: 2}
+    enemyHealthAmount: 50
+  - dungeonLevel: {fileID: 11400000, guid: 3394961534d4be2419e678ec6a31004b, type: 2}
+    enemyHealthAmount: 60
+  - dungeonLevel: {fileID: 11400000, guid: a35020a3752483f4da31a78424496455, type: 2}
+    enemyHealthAmount: 70
+  - dungeonLevel: {fileID: 11400000, guid: fe70df2418bd49a4c8096615268cfae7, type: 2}
+    enemyHealthAmount: 80
+  isImmuneAfterHit: 0
+  hitImmunityTime: 0

@@ -17,6 +17,7 @@ public static class Settings
    #region ROOM SETTINGS
     public const float fadeInTime = 0.5f; // time to fade in the room
     public const int maxChildCorridors = 3; // Max number of child corridors leading from a room. max should be 3 although this is not recommended since it can cause the dungeon building to fail since the rooms are more likely to not fit together
+    public const float doorUnlockDelay = 1f;
     
    #endregion 
 
@@ -36,6 +37,8 @@ public static class Settings
     public static int rollDown = Animator.StringToHash("rollDown");
     public static float baseSpeedForPlayerAnimations = 8f;
 
+    public static float baseSpeedForEnemyAnimations = 3f;
+
     // Animator parameters - Door
     public static int open = Animator.StringToHash("open");
     #endregion
@@ -49,8 +52,24 @@ public static class Settings
     public const float useAimAngleDistance = 3.5f; // if the target distance is less than this then the aim angle will be used (calculated from player), else the weapon aim angle will be used (calculated from the weapon). 
     #endregion
 
+    #region ASTAR PATHFINDING PARAMETERS
+    public const int defaultAStarMovementPenalty = 40;
+    public const int preferredPathAStarMovementPenalty = 1;
+    public const float playerMoveDistanceToRebuildPath = 3f;
+    public const float enemyPathRebuildCooldown = 2f;
+
+    #endregion
+
+    #region ENEMY PARAMETERS
+    public const int defaultEnemyHealth = 20;
+    #endregion
+
     #region UI PARAMETERS
     public const float uiAmmoIconSpacing = 4f;
+    #endregion
+
+    #region CONTACT DAMAGE PARAMETERS
+    public const float contactDamageCollisionResetDelay = 0.5f;
     #endregion
     
 }

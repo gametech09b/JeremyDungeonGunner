@@ -443,6 +443,9 @@ GameObject:
   - component: {fileID: 1926560026125681218}
   - component: {fileID: 5714597631586876809}
   - component: {fileID: 8665643683417683384}
+  - component: {fileID: -3457206913450646104}
+  - component: {fileID: -3200138712455789388}
+  - component: {fileID: 6092721140319250593}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -479,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0020cd7511e5604587fb1475a83ac32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDamageable: 1
 --- !u!210 &9174609208915998783
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -895,3 +899,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ac449c0fec2a24cb61df763d7f35c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3457206913450646104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174609208915998758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f3180eca483a64b96d9e5eae52ecec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3200138712455789388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174609208915998758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937979bfc9b588e43af5e820d49a1522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactDamageAmount: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 131072
+--- !u!114 &6092721140319250593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174609208915998758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e9286fa99c7a24d92ea3ff72b7e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactDamageAmount: 0
